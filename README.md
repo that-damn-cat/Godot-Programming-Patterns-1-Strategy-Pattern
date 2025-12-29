@@ -26,7 +26,7 @@ An attack strategy that the player can call `update` and `try_attack` on...
 `		attack_strategy.try_attack(global_position, get_viewport().get_mouse_position())`
 
 
-There is one concrete implementation of MovementStrategy (PlayerMovementStrategy) and three concrete implementations of AttackStrategy (`RangedAttackStrategy`, `MeleeAttackStrategy`, and `NullAttackStrategy`)
+There is one concrete implementation of MovementStrategy (`PlayerMovementStrategy`) and three concrete implementations of AttackStrategy (`RangedAttackStrategy`, `MeleeAttackStrategy`, and `NullAttackStrategy`)
 
 The attack strategies are extended from `Resource`, and so new versions of these concrete impmenetations can be made as resources. This project contains two Ranged and two Melee options.
 
