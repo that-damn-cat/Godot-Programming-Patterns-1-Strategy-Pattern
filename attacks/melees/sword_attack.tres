@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="MeleeStrategy" load_steps=5 format=3 uid="uid://cbstad54sitpm"]
+
+[ext_resource type="Texture2D" uid="uid://batyme05p2v6k" path="res://attacks/melees/sword/sword.png" id="1_3yt46"]
+[ext_resource type="Script" uid="uid://c3runyuidteyw" path="res://components/AttackStrategy/strategies/melee_strategy.gd" id="1_rkayu"]
+[ext_resource type="AudioStream" uid="uid://qtvw4at340t6" path="res://attacks/melees/sword/slash.wav" id="3_0m6cq"]
+[ext_resource type="PackedScene" uid="uid://cl47hpgeh4cc3" path="res://attacks/melees/sword/sword.tscn" id="3_1wksj"]
+
+[resource]
+script = ExtResource("1_rkayu")
+weapon_scene = ExtResource("3_1wksj")
+range_degrees = 90.0
+damage = 5.0
+pickup_icon = ExtResource("1_3yt46")
+pickup_rotation_degrees = 45.0
+attack_sfx = ExtResource("3_0m6cq")
+cooldown_seconds = 0.5
+duration_seconds = 0.16
+metadata/_custom_type_script = "uid://c3runyuidteyw"

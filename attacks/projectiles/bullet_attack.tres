@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="RangedStrategy" load_steps=5 format=3 uid="uid://dmnbay0aw0o15"]
+
+[ext_resource type="PackedScene" uid="uid://bys73eavvnwu4" path="res://attacks/projectiles/bullet/bullet.tscn" id="1_7vyon"]
+[ext_resource type="Texture2D" uid="uid://b60b8vplc7x3t" path="res://attacks/projectiles/bullet/bullet.png" id="1_kk2fp"]
+[ext_resource type="Script" uid="uid://brp8yh3evptn" path="res://components/AttackStrategy/strategies/ranged_strategy.gd" id="1_xwg6u"]
+[ext_resource type="AudioStream" uid="uid://dwk4i813x3fry" path="res://attacks/projectiles/bullet/explosion.wav" id="4_2itqm"]
+
+[resource]
+script = ExtResource("1_xwg6u")
+projectile_scene = ExtResource("1_7vyon")
+accuracy = 0.9
+speed = 750.0
+damage = 6.0
+pickup_icon = ExtResource("1_kk2fp")
+attack_sfx = ExtResource("4_2itqm")
+cooldown_seconds = 0.4
+duration_seconds = 30.0
+metadata/_custom_type_script = "uid://brp8yh3evptn"

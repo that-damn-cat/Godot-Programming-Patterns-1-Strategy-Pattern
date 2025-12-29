@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="RangedStrategy" load_steps=5 format=3 uid="uid://dsj2fpat0bchq"]
+
+[ext_resource type="PackedScene" uid="uid://bfyydwbd8xcpy" path="res://attacks/projectiles/arrow/arrow.tscn" id="1_6ks4n"]
+[ext_resource type="Script" uid="uid://brp8yh3evptn" path="res://components/AttackStrategy/strategies/ranged_strategy.gd" id="1_bsh4x"]
+[ext_resource type="Texture2D" uid="uid://c2gsh8nir403f" path="res://attacks/projectiles/arrow/arrow.png" id="1_ehm34"]
+[ext_resource type="AudioStream" uid="uid://dfqrl3100wq7n" path="res://attacks/projectiles/arrow/laserShoot.wav" id="4_bvkfg"]
+
+[resource]
+script = ExtResource("1_bsh4x")
+projectile_scene = ExtResource("1_6ks4n")
+speed = 500.0
+damage = 2.0
+pickup_icon = ExtResource("1_ehm34")
+pickup_rotation_degrees = -45.0
+attack_sfx = ExtResource("4_bvkfg")
+cooldown_seconds = 0.6
+metadata/_custom_type_script = "uid://brp8yh3evptn"

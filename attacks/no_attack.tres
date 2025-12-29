@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="NullAttackStrategy" load_steps=3 format=3 uid="uid://dtpdpl7ue551p"]
+
+[ext_resource type="Script" uid="uid://dns32ebcdy0sd" path="res://components/AttackStrategy/strategies/null_attack_strategy.gd" id="1_f6bab"]
+[ext_resource type="Texture2D" uid="uid://d0e1nik2f80rl" path="res://attacks/no_weapon.png" id="1_l8thv"]
+
+[resource]
+script = ExtResource("1_f6bab")
+pickup_icon = ExtResource("1_l8thv")
+cooldown_seconds = 0.1
+metadata/_custom_type_script = "uid://dns32ebcdy0sd"

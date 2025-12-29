@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bys73eavvnwu4"]
+
+[ext_resource type="Script" uid="uid://bxveytaxh0q8o" path="res://components/Attack/Projectile/projectile.gd" id="1_ugr24"]
+[ext_resource type="Texture2D" uid="uid://b60b8vplc7x3t" path="res://attacks/projectiles/bullet/bullet.png" id="2_gy1uy"]
+[ext_resource type="Script" uid="uid://b0t6j7npbw78g" path="res://components/Hitbox2D/Hitbox2D.gd" id="3_7n3vh"]
+[ext_resource type="Script" uid="uid://x23jddk8rue6" path="res://components/FreeNotifier2D/FreeNotifier2D.gd" id="4_7n3vh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gy1uy"]
+radius = 5.0249376
+
+[node name="Bullet" type="Node2D" node_paths=PackedStringArray("hit_box")]
+script = ExtResource("1_ugr24")
+hit_box = NodePath("Hitbox")
+spawn_offset = 8.0
+metadata/_custom_type_script = "uid://bxveytaxh0q8o"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_gy1uy")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("3_7n3vh")
+metadata/_custom_type_script = "uid://b0t6j7npbw78g"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_gy1uy")
+
+[node name="FreeNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+script = ExtResource("4_7n3vh")
+metadata/_custom_type_script = "uid://x23jddk8rue6"
