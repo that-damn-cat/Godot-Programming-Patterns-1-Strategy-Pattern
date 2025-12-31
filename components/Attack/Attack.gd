@@ -1,35 +1,26 @@
-@abstract
 class_name Attack
 extends Node2D
 
 @export var hit_box: Hitbox2D
+@export var sprite: Sprite2D
 
-var lifetime_seconds: float = 999.0
-var _elapsed_lifetime: float = 0.0
-
-@export var spawn_offset: float = 0.0
-
-
-func _process(delta: float) -> void:
-	_elapsed_lifetime += delta
-	if _elapsed_lifetime >= lifetime_seconds:
-		call_deferred("queue_free")
-		return
+var duration_seconds: float = 999.0
+var spawn_offset: float = 0.0
+var attack_range: float = 0.0
 
 
-func set_damage(new_damage: float) -> void:
-	hit_box.damage = new_damage
+func _ready() -> void:
+	sprite.position.x += spawn_offset
 
-func set_enemy_attack() -> void:
-	hit_box.set_collision_layer_value(2, false)
-	hit_box.set_collision_layer_value(3, true)
+	if hit_box:
+		if not hit_box.is_ancestor_of(sprite):
+			hit_box.position.x += spawn_offset
 
-	hit_box.set_collision_mask_value(2, true)
-	hit_box.set_collision_mask_value(3, false)
+		hit_box.hit_hurtbox.connect(queue_free)
 
-func set_player_attack() -> void:
-	hit_box.set_collision_layer_value(2, true)
-	hit_box.set_collision_layer_value(3, false)
-
-	hit_box.set_collision_mask_value(2, false)
-	hit_box.set_collision_mask_value(3, true)
+	if duration_seconds > 0.0:
+		var despawn_timer := Timer.new()
+		despawn_timer.wait_time = duration_seconds
+		despawn_timer.autostart = true
+		add_child(despawn_timer)
+		despawn_timer.timeout.connect(queue_free)

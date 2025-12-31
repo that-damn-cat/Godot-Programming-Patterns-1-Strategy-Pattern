@@ -2,54 +2,28 @@
 class_name AttackStrategy
 extends Resource
 
-@export_category("Attack Stats")
-@export var damage: float = 0.0
-@export var is_player_attack: bool = true
+@export var attack_data: AttackData
 
-@export_category("Pickup")
-@export var pickup_icon: Texture2D
-@export var pickup_rotation_degrees: float
+var _next_attack_time: float = 0.0
 
-@export_category("SFX")
-@export var attack_sfx: AudioStream
-var sfx_player: AudioStreamPlayer:
-	get:
-		return(_sfx_player)
-	set(new_player):
-		update_sfx_player(new_player)
-var _sfx_player: AudioStreamPlayer
+func attack(attacker: Node, origin: Vector2, target: Vector2) -> void:
+	var now = Time.get_ticks_msec() * 0.001
 
-@export_category("Timing")
-@export var cooldown_seconds: float = 0.0
-var _cooldown_time_elapsed: float = INF
-
-@export var duration_seconds: float = INF
-
-func try_attack(attack_origin: Vector2, attack_target: Vector2) -> void:
-	if _cooldown_time_elapsed >= cooldown_seconds:
-		attack(attack_origin, attack_target)
-		_cooldown_time_elapsed = 0.0
-		if sfx_player:
-			sfx_player.play()
-
-func update(delta: float) -> void:
-	_cooldown_time_elapsed += delta
-
-func update_sfx_player(new_player: AudioStreamPlayer) -> void:
-	_sfx_player = new_player
-
-	if _sfx_player == null:
+	if now < _next_attack_time:
 		return
 
-	if attack_sfx:
-		sfx_player.stream = attack_sfx
-	else:
-		sfx_player.stream = null
+	_next_attack_time = now + attack_data.cooldown_seconds
+	_perform_attack(attacker, origin, target)
+	_play_sfx(attacker)
 
-@abstract func attack(attack_origin: Vector2, attack_target: Vector2) -> void
+func _play_sfx(attacker: Node) -> void:
+	if attack_data.attack_sfx == null:
+		return
 
-func set_attack_collision(this_attack: Attack):
-	if is_player_attack:
-		this_attack.set_player_attack()
-	else:
-		this_attack.set_enemy_attack()
+	var sfx_player := AudioStreamPlayer.new()
+	sfx_player.stream = attack_data.attack_sfx
+	attacker.add_child(sfx_player)
+	sfx_player.play()
+	sfx_player.finished.connect(sfx_player.queue_free)
+
+@abstract func _perform_attack(attacker: Node, origin: Vector2, target: Vector2) -> void
