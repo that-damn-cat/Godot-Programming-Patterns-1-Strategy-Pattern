@@ -1,33 +1,9 @@
 A small demo project showing an example of the Strategy Pattern implemented in Godot/GDScript
 
-The Player has two Strategies -- 
+There are two strategies in this demo: A `MovementStrategy` that returns a `direction` and a `rotation`, and an `AttackStrategy` that provides an `attack()` function, and uses an `AttackData` resource.
 
-A movement controller (strategy) that returns a direction in physics_process...
+The player ultimately does very little! It has a setter for the attack strategy that handles what happens when the value goes null and a setter for its speed that passes the info along to its movement controller. When you are pressing the left mouse button, it runs the `attack_strategy.attack()` function, and it constantly fetches `movement_controller.velocity` and `movement_controller.rotation` for updating its position, along with a little `move_and_slide()`
 
-`func _physics_process(_delta: float) -> void:`
+Similarly, attacks do very little. They delete themselves if they hit a hurtbox or if they run out their max distance or lifetime duration, then poll their movement_strategy for the same info every frame. Most of the logic comes in for the individual strategies, combined with the AttackData. Strategies use this data to set up attack nodes and spawn them into the scene, then the movement strategy carries the torch from there.
 
-`	velocity = movement_controller.direction * speed`
-
-`	move_and_slide()`
-
-
-An attack strategy that the player can call `update` and `try_attack` on...
-
-`func _process(delta: float) -> void:`
-
-`	if attack_strategy == null:`
-
-`		attack_strategy = NO_ATTACK`
-
-`	attack_strategy.update(delta)`
-
-`	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):`
-
-`		attack_strategy.try_attack(global_position, get_viewport().get_mouse_position())`
-
-
-There is one concrete implementation of MovementStrategy (`PlayerMovementStrategy`) and three concrete implementations of AttackStrategy (`RangedAttackStrategy`, `MeleeAttackStrategy`, and `NullAttackStrategy`)
-
-The attack strategies are extended from `Resource`, and so new versions of these concrete impmenetations can be made as resources. This project contains two Ranged and two Melee options.
-
-This project also demonstrates how flexible Strategies can be. There is a generic Weapon Pickup object which can accept an Attack Strategy, and will provide the player with that attack when they collect it. The player's old strategy (if any) will drop to the ground in its place.
+This project aims to demonstrate how flexible Strategies can be. There is a generic Weapon Pickup object which can accept an Attack Strategy, and will provide the player with that attack when they collect it. The player's old strategy (if any) will drop to the ground in its place. Movement strategies are similarly swappable. For instance, the sword scene easily becomes a thrown weapon by simply applying a ranged attack/movement strategy!

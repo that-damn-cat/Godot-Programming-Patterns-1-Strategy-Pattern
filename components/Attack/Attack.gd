@@ -22,12 +22,13 @@ func _ready() -> void:
 
 	_setup_despawn_timer(duration_seconds)
 
-func _process(delta: float) -> void:
-	global_position += movement_strategy.velocity * delta
-	rotation += movement_strategy.rotation * delta
-
+func _process(_delta: float) -> void:
 	if _exceeded_distance():
 		queue_free()
+
+func _physics_process(delta: float) -> void:
+	global_position += movement_strategy.velocity * delta
+	rotation += movement_strategy.rotation * delta
 
 
 func _exceeded_distance() -> bool:
