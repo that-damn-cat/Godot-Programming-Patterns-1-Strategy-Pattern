@@ -1,5 +1,5 @@
 class_name NullAttackStrategy
 extends AttackStrategy
 
-func attack(_attack_origin: Vector2, _attack_target: Vector2) -> void:
+func _perform_attack(_attacker: Node2D, _origin: Vector2, _target: Vector2) -> void:
 	return

@@ -24,10 +24,6 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 
-	if attack_strategy == null:
-		push_warning("Attack Pickup has no Attack Strategy")
-		attack_strategy = NO_ATTACK
-
 	update_strategy(attack_strategy)
 	body_entered.connect(_on_body_entered)
 

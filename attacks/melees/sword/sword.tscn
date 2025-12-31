@@ -1,18 +1,15 @@
 [gd_scene load_steps=5 format=3 uid="uid://cl47hpgeh4cc3"]
 
-[ext_resource type="Script" uid="uid://cmj1y5fjxyaql" path="res://components/Attack/MeleeAttack/MeleeAttack.gd" id="1_bqsk4"]
+[ext_resource type="Script" uid="uid://b7o8mkd6g76en" path="res://components/Attack/Attack.gd" id="1_uj0ag"]
 [ext_resource type="Texture2D" uid="uid://batyme05p2v6k" path="res://attacks/melees/sword/sword.png" id="2_uj0ag"]
 [ext_resource type="Script" uid="uid://b0t6j7npbw78g" path="res://components/Hitbox2D/Hitbox2D.gd" id="3_dm21e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4oqno"]
 size = Vector2(11, 8)
 
-[node name="Sword" type="Node2D" node_paths=PackedStringArray("position_root", "hit_box")]
-script = ExtResource("1_bqsk4")
-position_root = NodePath("Sprite2D")
-hit_box = NodePath("Sprite2D/Hitbox2D")
-spawn_offset = 6.0
-metadata/_custom_type_script = "uid://cmj1y5fjxyaql"
+[node name="Sword" type="Node2D"]
+script = ExtResource("1_uj0ag")
+metadata/_custom_type_script = "uid://b7o8mkd6g76en"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(8, 0)

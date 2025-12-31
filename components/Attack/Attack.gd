@@ -7,7 +7,6 @@ extends Node2D
 
 var duration_seconds: float = 999.0
 var spawn_offset: float = 0.0
-var attack_range: float = 0.0
 
 
 func _ready() -> void:
@@ -23,8 +22,10 @@ func _ready() -> void:
 		var despawn_timer := Timer.new()
 		despawn_timer.wait_time = duration_seconds
 		despawn_timer.autostart = true
+		despawn_timer.one_shot = true
 		add_child(despawn_timer)
 		despawn_timer.timeout.connect(queue_free)
 
 func _process(delta: float) -> void:
-	global_position = movement_strategy.velocity * delta
+	global_position += movement_strategy.velocity * delta
+	rotation += movement_strategy.rotation * delta

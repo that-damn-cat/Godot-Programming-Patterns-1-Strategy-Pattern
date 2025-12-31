@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://dffqaeu2g3vlo"]
 
-[ext_resource type="Script" uid="uid://bwyccbi366unh" path="res://components/AttackPickup/AttackPickup.gd" id="1_b17b2"]
+[ext_resource type="Script" uid="uid://bwyccbi366unh" path="res://pickups/AttackPickup.gd" id="1_b17b2"]
 [ext_resource type="Texture2D" uid="uid://sldslk36xk7a" path="res://assets/ground_shadow.png" id="2_ap43w"]
-[ext_resource type="Resource" uid="uid://dtpdpl7ue551p" path="res://attacks/no_attack.tres" id="2_kwv1x"]
-[ext_resource type="Texture2D" uid="uid://d0e1nik2f80rl" path="res://attacks/no_weapon.png" id="4_2e5g6"]
+[ext_resource type="Resource" path="res://attacks/no_attack.tres" id="2_kwv1x"]
+[ext_resource type="Texture2D" uid="uid://d0e1nik2f80rl" path="res://attacks/null/no_weapon.png" id="4_2e5g6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t4tbc"]
 radius = 18.0

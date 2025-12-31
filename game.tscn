@@ -1,14 +1,10 @@
-[gd_scene load_steps=16 format=4 uid="uid://nf1n1241o2fx"]
+[gd_scene load_steps=13 format=4 uid="uid://nf1n1241o2fx"]
 
 [ext_resource type="Texture2D" uid="uid://baa44uctf6ptu" path="res://assets/pixel_plains_free/new_basic_tiles_free.png" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://c08pw6rfr55p0" path="res://game.gd" id="1_fc0e3"]
 [ext_resource type="Script" uid="uid://b6u7u2uj13rtb" path="res://scripts/boundaries_tool.gd" id="2_feb5d"]
 [ext_resource type="PackedScene" uid="uid://dl5oym57t06lg" path="res://entities/player/player.tscn" id="3_feb5d"]
-[ext_resource type="Resource" uid="uid://dmnbay0aw0o15" path="res://attacks/projectiles/bullet_attack.tres" id="6_eow3j"]
-[ext_resource type="PackedScene" uid="uid://dffqaeu2g3vlo" path="res://pickups/weapon_pickup.tscn" id="6_ryrav"]
-[ext_resource type="Resource" uid="uid://dsj2fpat0bchq" path="res://attacks/projectiles/bow_attack.tres" id="7_j5wjh"]
-[ext_resource type="Resource" uid="uid://dwcxhqdajhkp" path="res://attacks/melees/spear_attack.tres" id="9_vef74"]
-[ext_resource type="Resource" uid="uid://cbstad54sitpm" path="res://attacks/melees/sword_attack.tres" id="10_lc2xo"]
+[ext_resource type="Script" uid="uid://dns32ebcdy0sd" path="res://components/AttackStrategy/strategies/null_attack_strategy.gd" id="5_7jktm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fc0e3"]
 texture = ExtResource("1_e2o6t")
@@ -161,6 +157,10 @@ normal = Vector2(-1, 0)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7jktm"]
 normal = Vector2(1, 0)
 
+[sub_resource type="Resource" id="Resource_ryrav"]
+script = ExtResource("5_7jktm")
+metadata/_custom_type_script = "uid://dns32ebcdy0sd"
+
 [node name="Game" type="Node" node_paths=PackedStringArray("projectile_container", "enemy_container") groups=["Game"]]
 script = ExtResource("1_fc0e3")
 projectile_container = NodePath("Projectiles")
@@ -198,23 +198,4 @@ shape = SubResource("WorldBoundaryShape2D_7jktm")
 
 [node name="Player" parent="." instance=ExtResource("3_feb5d")]
 position = Vector2(150, 133)
-
-[node name="WeaponPickup" parent="." instance=ExtResource("6_ryrav")]
-position = Vector2(332, 394)
-attack_strategy = ExtResource("10_lc2xo")
-
-[node name="WeaponPickup2" parent="." instance=ExtResource("6_ryrav")]
-position = Vector2(483, 420)
-attack_strategy = ExtResource("6_eow3j")
-
-[node name="WeaponPickup3" parent="." instance=ExtResource("6_ryrav")]
-position = Vector2(403, 489)
-attack_strategy = ExtResource("7_j5wjh")
-
-[node name="WeaponPickup4" parent="." instance=ExtResource("6_ryrav")]
-position = Vector2(573, 451)
-attack_strategy = ExtResource("10_lc2xo")
-
-[node name="WeaponPickup5" parent="." instance=ExtResource("6_ryrav")]
-position = Vector2(676, 499)
-attack_strategy = ExtResource("9_vef74")
+starting_attack = SubResource("Resource_ryrav")

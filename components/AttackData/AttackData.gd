@@ -18,7 +18,11 @@ extends Resource
 @export var cooldown_seconds: float
 
 
-func _get_attack_scene() -> Attack:
+func _init() -> void:
+	resource_local_to_scene = true
+
+
+func get_attack_scene() -> Attack:
 	var instance := attack_scene.instantiate()
 	if not instance is Attack:
 		push_error("AttackData.attack_scene must be of type Attack!")

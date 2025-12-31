@@ -1,31 +1,28 @@
 class_name MeleeStrategy
 extends AttackStrategy
 
-@export var weapon_scene: PackedScene
-@export_range(0.0, 360.0, 1.0) var range_degrees: float
+func _perform_attack(attacker: Node2D, origin: Vector2, target: Vector2) -> void:
+	var attack_scene: Attack = attack_data.get_attack_scene()
 
+	# Configure movement
+	attack_scene.movement_strategy = attack_data.movement_strategy
 
-func attack(attack_origin: Vector2, target: Vector2) -> void:
-	# Calculate Rotation Speed (rad/sec)
-	var rotation_speed: float = deg_to_rad(range_degrees) / duration_seconds
+	# Calculate rotation speed required
+	var attack_range: float = clamp(attack_data.attack_range, 0.0, 360.0)
+	var rotation_speed: float = deg_to_rad(attack_range) / attack_data.duration_seconds
+	attack_scene.movement_strategy.angular_speed = rotation_speed
 
-	# Find Intended Parent
-	var parent_node: Node2D
-	if is_player_attack:
-		parent_node = NodeFinder.get_player_node()
-	else:
-		parent_node = NodeFinder.get_nearest_enemy(attack_origin)
+	# Set other requirements
+	_set_collision(attacker, attack_scene.hit_box)
+	attack_scene.duration_seconds = attack_data.duration_seconds
+	attack_scene.hit_box.damage = attack_data.damage
 
-	var melee_scene: MeleeAttack = weapon_scene.instantiate()
-	melee_scene.lifetime_seconds = duration_seconds
-	melee_scene.rotation_speed = rotation_speed
-	set_attack_collision(melee_scene)
+	# Set starting position and angle
+	attack_scene.global_position = attacker.global_position
+	attack_scene.spawn_offset = attack_data.pivot_offset
 
-	# Set Starting Position
-	melee_scene.global_position = Vector2.ZERO
+	var angle_to_target = (target - origin).angle()
+	attack_scene.rotation = angle_to_target - deg_to_rad(attack_data.attack_range / 2.0)
 
-	# Set Starting Angle
-	var angle_to_target = (target - attack_origin).angle()
-	melee_scene.rotation = angle_to_target - deg_to_rad(range_degrees / 2.0)
-
-	parent_node.add_child(melee_scene)
+	# Spawn it
+	attacker.add_child(attack_scene)
