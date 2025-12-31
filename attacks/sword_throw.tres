@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="RangedStrategy" load_steps=9 format=3 uid="uid://qqfttpovoug2"]
+
+[ext_resource type="Script" uid="uid://brp8yh3evptn" path="res://components/AttackStrategy/strategies/ranged_strategy.gd" id="1_8qnnm"]
+[ext_resource type="Script" uid="uid://dmqwweib121uh" path="res://components/AttackData/AttackData.gd" id="1_jgqen"]
+[ext_resource type="PackedScene" uid="uid://cl47hpgeh4cc3" path="res://attacks/scenes/melees/sword/sword.tscn" id="1_rxig1"]
+[ext_resource type="AudioStream" uid="uid://qtvw4at340t6" path="res://attacks/scenes/melees/sword/slash.wav" id="2_o4dsh"]
+[ext_resource type="Script" uid="uid://cumqmxndmfx0n" path="res://components/MovementStrategy/strategies/move_forward.gd" id="3_1r0ap"]
+[ext_resource type="Texture2D" uid="uid://batyme05p2v6k" path="res://attacks/scenes/melees/sword/sword.png" id="4_r6p4q"]
+
+[sub_resource type="Resource" id="Resource_8yfvt"]
+script = ExtResource("3_1r0ap")
+metadata/_custom_type_script = "uid://cumqmxndmfx0n"
+
+[sub_resource type="Resource" id="Resource_rxig1"]
+script = ExtResource("1_jgqen")
+attack_scene = ExtResource("1_rxig1")
+pivot_offset = 4.0
+movement_strategy = SubResource("Resource_8yfvt")
+pickup_icon = ExtResource("4_r6p4q")
+attack_sfx = ExtResource("2_o4dsh")
+damage = 3.0
+attack_range = 200.0
+cooldown_seconds = 0.8
+metadata/_custom_type_script = "uid://dmqwweib121uh"
+
+[resource]
+script = ExtResource("1_8qnnm")
+speed = 350.0
+attack_data = SubResource("Resource_rxig1")
+metadata/_custom_type_script = "uid://brp8yh3evptn"

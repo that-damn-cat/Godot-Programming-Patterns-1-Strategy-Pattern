@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://nf1n1241o2fx"]
+[gd_scene load_steps=17 format=4 uid="uid://nf1n1241o2fx"]
 
 [ext_resource type="Texture2D" uid="uid://baa44uctf6ptu" path="res://assets/pixel_plains_free/new_basic_tiles_free.png" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://c08pw6rfr55p0" path="res://game.gd" id="1_fc0e3"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://bhbu528uk383q" path="res://attacks/shoot_arrow.tres" id="7_vef74"]
 [ext_resource type="Resource" uid="uid://cmsthi3pmfrdq" path="res://attacks/sword_swing.tres" id="8_hve3p"]
 [ext_resource type="Resource" uid="uid://di3xcl4dcnuon" path="res://attacks/spear_attack.tres" id="8_vef74"]
+[ext_resource type="Resource" uid="uid://qqfttpovoug2" path="res://attacks/sword_throw.tres" id="10_hve3p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fc0e3"]
 texture = ExtResource("1_e2o6t")
@@ -217,3 +218,7 @@ attack_strategy = ExtResource("8_vef74")
 [node name="WeaponPickup5" parent="." instance=ExtResource("5_j5wjh")]
 position = Vector2(372, 313)
 attack_strategy = ExtResource("8_hve3p")
+
+[node name="WeaponPickup6" parent="." instance=ExtResource("5_j5wjh")]
+position = Vector2(304, 223)
+attack_strategy = ExtResource("10_hve3p")
