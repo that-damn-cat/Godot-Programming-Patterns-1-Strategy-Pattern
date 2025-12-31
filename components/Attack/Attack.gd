@@ -3,6 +3,7 @@ extends Node2D
 
 @export var hit_box: Hitbox2D
 @export var sprite: Sprite2D
+@export var movement_strategy: MovementStrategy
 
 var duration_seconds: float = 999.0
 var spawn_offset: float = 0.0
@@ -24,3 +25,6 @@ func _ready() -> void:
 		despawn_timer.autostart = true
 		add_child(despawn_timer)
 		despawn_timer.timeout.connect(queue_free)
+
+func _process(delta: float) -> void:
+	global_position = movement_strategy.velocity * delta
