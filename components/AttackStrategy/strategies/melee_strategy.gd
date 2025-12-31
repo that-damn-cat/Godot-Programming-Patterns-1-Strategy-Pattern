@@ -4,8 +4,11 @@ extends AttackStrategy
 func _perform_attack(attacker: Node2D, origin: Vector2, target: Vector2) -> void:
 	var attack_scene: Attack = attack_data.get_attack_scene()
 
+	if attack_scene == null:
+		return
+
 	# Configure movement
-	attack_scene.movement_strategy = attack_data.movement_strategy
+	attack_scene.movement_strategy = attack_data.movement_strategy.duplicate()
 
 	# Calculate rotation speed required
 	var attack_range: float = clamp(attack_data.attack_range, 0.0, 360.0)

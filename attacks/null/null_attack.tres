@@ -1,22 +1,22 @@
-[gd_resource type="Resource" script_class="MeleeStrategy" load_steps=7 format=3 uid="uid://cad7lgpy0q5s8"]
+[gd_resource type="Resource" script_class="NullAttackStrategy" load_steps=7 format=3 uid="uid://cad7lgpy0q5s8"]
 
 [ext_resource type="Script" uid="uid://bxhoopvbe5vjn" path="res://components/MovementStrategy/strategies/null_movement.gd" id="1_8g5om"]
-[ext_resource type="Script" uid="uid://c3runyuidteyw" path="res://components/AttackStrategy/strategies/melee_strategy.gd" id="1_j5smc"]
+[ext_resource type="Script" uid="uid://dns32ebcdy0sd" path="res://components/AttackStrategy/strategies/null_attack_strategy.gd" id="1_j5smc"]
 [ext_resource type="Texture2D" uid="uid://d0e1nik2f80rl" path="res://attacks/null/no_weapon.png" id="1_rdeky"]
 [ext_resource type="Script" uid="uid://dmqwweib121uh" path="res://components/AttackData/AttackData.gd" id="2_8g5om"]
 
-[sub_resource type="Resource" id="Resource_gydmb"]
+[sub_resource type="Resource" id="Resource_8g5om"]
 script = ExtResource("1_8g5om")
 metadata/_custom_type_script = "uid://bxhoopvbe5vjn"
 
 [sub_resource type="Resource" id="Resource_16brr"]
 script = ExtResource("2_8g5om")
-movement_strategy = SubResource("Resource_gydmb")
+movement_strategy = SubResource("Resource_8g5om")
 pickup_icon = ExtResource("1_rdeky")
-duration_seconds = 1.0
+cooldown_seconds = 0.1
 metadata/_custom_type_script = "uid://dmqwweib121uh"
 
 [resource]
 script = ExtResource("1_j5smc")
 attack_data = SubResource("Resource_16brr")
-metadata/_custom_type_script = "uid://c3runyuidteyw"
+metadata/_custom_type_script = "uid://dns32ebcdy0sd"

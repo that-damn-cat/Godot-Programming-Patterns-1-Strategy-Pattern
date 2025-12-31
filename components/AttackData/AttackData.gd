@@ -23,6 +23,9 @@ func _init() -> void:
 
 
 func get_attack_scene() -> Attack:
+	if not attack_scene:
+		return(null)
+
 	var instance := attack_scene.instantiate()
 	if not instance is Attack:
 		push_error("AttackData.attack_scene must be of type Attack!")

@@ -19,12 +19,11 @@ var _time_elapsed: float = randf_range(0.0, TAU)
 var _pickup_sprite: Sprite2D
 
 func _ready() -> void:
-	_update_pickup_sprite()
+	update_strategy(attack_strategy)
 
 	if Engine.is_editor_hint():
 		return
 
-	update_strategy(attack_strategy)
 	body_entered.connect(_on_body_entered)
 
 func _process(delta: float) -> void:
@@ -47,12 +46,13 @@ func update_strategy(this_strategy: AttackStrategy) -> void:
 	var new_texture: Texture2D
 
 	if this_strategy != null:
-		if this_strategy.pickup_icon != null:
-			new_texture = this_strategy.pickup_icon
+		if this_strategy.attack_data.pickup_icon != null:
+			new_texture = this_strategy.attack_data.pickup_icon
 
 	_pickup_sprite.texture = new_texture
 	_pickup_sprite.scale = Vector2(2.0, 2.0)
-	_pickup_sprite.rotation_degrees = this_strategy.pickup_rotation_degrees
+	_pickup_sprite.rotation_degrees = this_strategy.attack_data.pickup_angle_degrees
+
 
 func _update_pickup_sprite() -> void:
 	_pickup_sprite = find_child("PickupSprite")
@@ -70,7 +70,7 @@ func _on_body_entered(body: Node2D) -> void:
 	var body_old_attack = body.attack_strategy
 	body.attack_strategy = attack_strategy
 
-	if body_old_attack == NO_ATTACK:
+	if body_old_attack is NullAttackStrategy:
 		queue_free()
 	else:
 		attack_strategy = body_old_attack

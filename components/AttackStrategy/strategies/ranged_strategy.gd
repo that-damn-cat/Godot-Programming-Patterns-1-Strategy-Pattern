@@ -8,7 +8,7 @@ func _perform_attack(attacker: Node2D, origin: Vector2, target: Vector2) -> void
 	var projectile: Attack = attack_data.get_attack_scene()
 
 	# Configure movement
-	projectile.movement_strategy = attack_data.movement_strategy
+	projectile.movement_strategy = attack_data.movement_strategy.duplicate()
 
 	# Set Speed
 	projectile.movement_strategy.controlled_node = projectile
@@ -18,6 +18,8 @@ func _perform_attack(attacker: Node2D, origin: Vector2, target: Vector2) -> void
 	_set_collision(attacker, projectile.hit_box)
 	projectile.duration_seconds = attack_data.duration_seconds
 	projectile.hit_box.damage = attack_data.damage
+	projectile.origin = origin
+	projectile.max_distance = attack_data.attack_range
 
 	# Determine rotation and starting position
 	accuracy = clamp(accuracy, 0.0, 1.0)

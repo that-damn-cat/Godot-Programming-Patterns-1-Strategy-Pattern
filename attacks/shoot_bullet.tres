@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="RangedStrategy" load_steps=9 format=3 uid="uid://dq107og3oxpn7"]
+
+[ext_resource type="Script" uid="uid://brp8yh3evptn" path="res://components/AttackStrategy/strategies/ranged_strategy.gd" id="1_4oojc"]
+[ext_resource type="PackedScene" uid="uid://bys73eavvnwu4" path="res://attacks/scenes/projectiles/bullet/bullet.tscn" id="1_xlbil"]
+[ext_resource type="AudioStream" uid="uid://dwk4i813x3fry" path="res://attacks/scenes/projectiles/bullet/explosion.wav" id="2_3ao1t"]
+[ext_resource type="Script" uid="uid://cumqmxndmfx0n" path="res://components/MovementStrategy/strategies/move_forward.gd" id="3_vfk0s"]
+[ext_resource type="Texture2D" uid="uid://b60b8vplc7x3t" path="res://attacks/scenes/projectiles/bullet/bullet.png" id="4_0hsu1"]
+[ext_resource type="Script" uid="uid://dmqwweib121uh" path="res://components/AttackData/AttackData.gd" id="5_pd6wx"]
+
+[sub_resource type="Resource" id="Resource_vipu0"]
+script = ExtResource("3_vfk0s")
+metadata/_custom_type_script = "uid://cumqmxndmfx0n"
+
+[sub_resource type="Resource" id="Resource_bdcno"]
+script = ExtResource("5_pd6wx")
+attack_scene = ExtResource("1_xlbil")
+pivot_offset = 6.0
+movement_strategy = SubResource("Resource_vipu0")
+pickup_icon = ExtResource("4_0hsu1")
+attack_sfx = ExtResource("2_3ao1t")
+damage = 4.0
+attack_range = 325.0
+cooldown_seconds = 0.35
+metadata/_custom_type_script = "uid://dmqwweib121uh"
+
+[resource]
+script = ExtResource("1_4oojc")
+speed = 600.0
+accuracy = 0.95
+attack_data = SubResource("Resource_bdcno")
+metadata/_custom_type_script = "uid://brp8yh3evptn"

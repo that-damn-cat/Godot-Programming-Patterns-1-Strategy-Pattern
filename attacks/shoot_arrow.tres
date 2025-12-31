@@ -20,12 +20,13 @@ pickup_icon = ExtResource("4_2134g")
 pickup_angle_degrees = -45.0
 attack_sfx = ExtResource("2_3pvag")
 damage = 2.0
-attack_range = 100.0
-duration_seconds = 5.0
+attack_range = inf
+duration_seconds = inf
 cooldown_seconds = 1.0
 metadata/_custom_type_script = "uid://dmqwweib121uh"
 
 [resource]
 script = ExtResource("6_n3gf2")
+speed = 300.0
 attack_data = SubResource("Resource_f5334")
 metadata/_custom_type_script = "uid://brp8yh3evptn"
