@@ -1,3 +1,4 @@
+class_name ForwardMovement
 extends MovementStrategy
 
 func _get_direction_intent() -> Vector2:
@@ -6,5 +7,5 @@ func _get_direction_intent() -> Vector2:
 
 	return(Vector2.RIGHT.rotated(controlled_node.rotation))
 
-func get_rotation(_delta: float) -> float:
+func _get_rotation_intent() -> float:
 	return(0.0)

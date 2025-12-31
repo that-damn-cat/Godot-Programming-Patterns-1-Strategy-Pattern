@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2gsh8nir403f"
-path="res://.godot/imported/arrow.png-a79f2e1f4d342f1ef96898d5dbd9f626.ctex"
+uid="uid://c667hp5effwyp"
+path="res://.godot/imported/spear.png-9ebfe365acd68068518bd305ac08a2f5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://attacks/projectiles/arrow/arrow.png"
-dest_files=["res://.godot/imported/arrow.png-a79f2e1f4d342f1ef96898d5dbd9f626.ctex"]
+source_file="res://attacks/scenes/melees/spear/spear.png"
+dest_files=["res://.godot/imported/spear.png-9ebfe365acd68068518bd305ac08a2f5.ctex"]
 
 [params]
 

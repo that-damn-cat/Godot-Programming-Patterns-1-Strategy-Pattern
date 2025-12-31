@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://clhw12rvxtyn0"
-path="res://.godot/imported/stab.wav-02430e1a97a9e0addf836b553ab87c2c.sample"
+uid="uid://qtvw4at340t6"
+path="res://.godot/imported/slash.wav-2817f18df8c6c2c1e1065cf1af12ebfe.sample"
 
 [deps]
 
-source_file="res://attacks/melees/spear/stab.wav"
-dest_files=["res://.godot/imported/stab.wav-02430e1a97a9e0addf836b553ab87c2c.sample"]
+source_file="res://attacks/scenes/melees/sword/slash.wav"
+dest_files=["res://.godot/imported/slash.wav-2817f18df8c6c2c1e1065cf1af12ebfe.sample"]
 
 [params]
 

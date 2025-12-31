@@ -26,6 +26,9 @@ var velocity: Vector2:
 	get:
 		return(direction * speed)
 
+func _init() -> void:
+	resource_local_to_scene = true
+
 ## Should return a normalized direction vector.
 @abstract func _get_direction_intent() -> Vector2
 

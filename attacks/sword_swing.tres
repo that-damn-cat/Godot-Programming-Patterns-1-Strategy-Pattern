@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="MeleeStrategy" load_steps=9 format=3 uid="uid://cmsthi3pmfrdq"]
+
+[ext_resource type="PackedScene" uid="uid://cl47hpgeh4cc3" path="res://attacks/scenes/melees/sword/sword.tscn" id="1_jof3t"]
+[ext_resource type="Script" uid="uid://dmqwweib121uh" path="res://components/AttackData/AttackData.gd" id="1_tvyf6"]
+[ext_resource type="Script" uid="uid://c3runyuidteyw" path="res://components/AttackStrategy/strategies/melee_strategy.gd" id="2_8v7xf"]
+[ext_resource type="AudioStream" uid="uid://qtvw4at340t6" path="res://attacks/scenes/melees/sword/slash.wav" id="2_sopqn"]
+[ext_resource type="Script" uid="uid://8dp2usy3b3g" path="res://components/MovementStrategy/strategies/rotate.gd" id="3_q8hje"]
+[ext_resource type="Texture2D" uid="uid://batyme05p2v6k" path="res://attacks/scenes/melees/sword/sword.png" id="4_vrpd5"]
+
+[sub_resource type="Resource" id="Resource_8r8dm"]
+script = ExtResource("3_q8hje")
+metadata/_custom_type_script = "uid://8dp2usy3b3g"
+
+[sub_resource type="Resource" id="Resource_0vvtg"]
+script = ExtResource("1_tvyf6")
+attack_scene = ExtResource("1_jof3t")
+pivot_offset = 7.0
+movement_strategy = SubResource("Resource_8r8dm")
+pickup_icon = ExtResource("4_vrpd5")
+pickup_angle_degrees = -30.0
+attack_sfx = ExtResource("2_sopqn")
+damage = 3.0
+attack_range = 75.0
+duration_seconds = 0.2
+cooldown_seconds = 0.6
+metadata/_custom_type_script = "uid://dmqwweib121uh"
+
+[resource]
+script = ExtResource("2_8v7xf")
+attack_data = SubResource("Resource_0vvtg")
+metadata/_custom_type_script = "uid://c3runyuidteyw"

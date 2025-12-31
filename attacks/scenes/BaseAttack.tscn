@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck1ocwumm1dij"]
+
+[ext_resource type="Script" uid="uid://b7o8mkd6g76en" path="res://components/Attack/Attack.gd" id="1_8nlxe"]
+[ext_resource type="Script" uid="uid://b0t6j7npbw78g" path="res://components/Hitbox2D/Hitbox2D.gd" id="2_57a5e"]
+[ext_resource type="Script" uid="uid://x23jddk8rue6" path="res://components/FreeNotifier2D/FreeNotifier2D.gd" id="3_537tq"]
+
+[node name="BaseAttack" type="Node2D" node_paths=PackedStringArray("hit_box", "sprite")]
+script = ExtResource("1_8nlxe")
+hit_box = NodePath("Hitbox2D")
+sprite = NodePath("Sprite2D")
+metadata/_custom_type_script = "uid://b7o8mkd6g76en"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="FreeNotifier2D" type="VisibleOnScreenNotifier2D" parent="Sprite2D"]
+script = ExtResource("3_537tq")
+metadata/_custom_type_script = "uid://x23jddk8rue6"
+
+[node name="Hitbox2D" type="Area2D" parent="."]
+script = ExtResource("2_57a5e")
+metadata/_custom_type_script = "uid://b0t6j7npbw78g"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox2D"]

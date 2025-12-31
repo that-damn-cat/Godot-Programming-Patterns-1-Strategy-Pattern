@@ -1,3 +1,4 @@
+class_name NullMovement
 extends MovementStrategy
 
 func _get_direction_intent() -> Vector2:

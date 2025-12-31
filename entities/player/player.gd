@@ -1,10 +1,13 @@
 class_name Player
 extends CharacterBody2D
 
-const NO_ATTACK: AttackStrategy = preload("res://attacks/no_attack.tres")
+const NO_ATTACK: AttackStrategy = preload("res://attacks/null/null_attack.tres")
 
+@export_category("Movement")
 @export var movement_controller: MovementStrategy
 @export var speed: float = 200.0
+
+@export_category("Attacks")
 @export var starting_attack: AttackStrategy
 
 var attack_strategy: AttackStrategy:
@@ -16,6 +19,7 @@ var _attack_strategy
 
 func _ready() -> void:
 	attack_strategy = starting_attack
+	movement_controller.speed = speed
 
 func _process(_delta: float) -> void:
 	if attack_strategy == null:

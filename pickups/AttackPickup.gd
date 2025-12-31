@@ -2,7 +2,7 @@
 class_name AttackPickup
 extends Area2D
 
-const NO_ATTACK: AttackStrategy = preload("res://attacks/no_attack.tres")
+const NO_ATTACK: AttackStrategy = preload("res://attacks/null/null_attack.tres")
 
 @export var attack_strategy: AttackStrategy:
 	get:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c667hp5effwyp"
-path="res://.godot/imported/spear.png-27003087c5422ab257c92a068ba1dd19.ctex"
+uid="uid://b60b8vplc7x3t"
+path="res://.godot/imported/bullet.png-809f72a80df63563f62e89b87f580baa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://attacks/melees/spear/spear.png"
-dest_files=["res://.godot/imported/spear.png-27003087c5422ab257c92a068ba1dd19.ctex"]
+source_file="res://attacks/scenes/projectiles/bullet/bullet.png"
+dest_files=["res://.godot/imported/bullet.png-809f72a80df63563f62e89b87f580baa.ctex"]
 
 [params]
 

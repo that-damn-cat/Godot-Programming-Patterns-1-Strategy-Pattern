@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bys73eavvnwu4"]
+
+[ext_resource type="PackedScene" uid="uid://ck1ocwumm1dij" path="res://attacks/scenes/BaseAttack.tscn" id="1_0xym8"]
+[ext_resource type="Texture2D" uid="uid://b60b8vplc7x3t" path="res://attacks/scenes/projectiles/bullet/bullet.png" id="2_gy1uy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gy1uy"]
+radius = 3.1622777
+
+[node name="BaseAttack" instance=ExtResource("1_0xym8")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_gy1uy")
+
+[node name="FreeNotifier2D" parent="Sprite2D" index="0"]
+rect = Rect2(-5, -5, 10, 10)
+
+[node name="CollisionShape2D" parent="Hitbox2D" index="0"]
+shape = SubResource("CircleShape2D_gy1uy")

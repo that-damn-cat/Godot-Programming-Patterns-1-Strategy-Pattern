@@ -11,6 +11,7 @@ func _perform_attack(attacker: Node2D, origin: Vector2, target: Vector2) -> void
 	projectile.movement_strategy = attack_data.movement_strategy
 
 	# Set Speed
+	projectile.movement_strategy.controlled_node = projectile
 	projectile.movement_strategy.speed = speed
 
 	# Set other requirements
@@ -24,6 +25,7 @@ func _perform_attack(attacker: Node2D, origin: Vector2, target: Vector2) -> void
 	var accuracy_offset: float = randf_range(-max_spread, max_spread)
 	var angle_to_target = (target - origin).angle()
 	projectile.rotation = angle_to_target + accuracy_offset
+	projectile.scale = attacker.scale
 
 	projectile.global_position = attacker.global_position
 	projectile.spawn_offset = attack_data.pivot_offset

@@ -1,10 +1,10 @@
-[gd_scene load_steps=13 format=4 uid="uid://nf1n1241o2fx"]
+[gd_scene load_steps=12 format=4 uid="uid://nf1n1241o2fx"]
 
 [ext_resource type="Texture2D" uid="uid://baa44uctf6ptu" path="res://assets/pixel_plains_free/new_basic_tiles_free.png" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://c08pw6rfr55p0" path="res://game.gd" id="1_fc0e3"]
 [ext_resource type="Script" uid="uid://b6u7u2uj13rtb" path="res://scripts/boundaries_tool.gd" id="2_feb5d"]
 [ext_resource type="PackedScene" uid="uid://dl5oym57t06lg" path="res://entities/player/player.tscn" id="3_feb5d"]
-[ext_resource type="Script" uid="uid://dns32ebcdy0sd" path="res://components/AttackStrategy/strategies/null_attack_strategy.gd" id="5_7jktm"]
+[ext_resource type="Resource" uid="uid://bhbu528uk383q" path="res://attacks/shoot_arrow.tres" id="5_7jktm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fc0e3"]
 texture = ExtResource("1_e2o6t")
@@ -157,10 +157,6 @@ normal = Vector2(-1, 0)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7jktm"]
 normal = Vector2(1, 0)
 
-[sub_resource type="Resource" id="Resource_ryrav"]
-script = ExtResource("5_7jktm")
-metadata/_custom_type_script = "uid://dns32ebcdy0sd"
-
 [node name="Game" type="Node" node_paths=PackedStringArray("projectile_container", "enemy_container") groups=["Game"]]
 script = ExtResource("1_fc0e3")
 projectile_container = NodePath("Projectiles")
@@ -198,4 +194,4 @@ shape = SubResource("WorldBoundaryShape2D_7jktm")
 
 [node name="Player" parent="." instance=ExtResource("3_feb5d")]
 position = Vector2(150, 133)
-starting_attack = SubResource("Resource_ryrav")
+starting_attack = ExtResource("5_7jktm")

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cx6okxkwr5ok8"]
+
+[ext_resource type="PackedScene" uid="uid://ck1ocwumm1dij" path="res://attacks/scenes/BaseAttack.tscn" id="1_2nivn"]
+[ext_resource type="Texture2D" uid="uid://c667hp5effwyp" path="res://attacks/scenes/melees/spear/spear.png" id="2_b18li"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b18li"]
+size = Vector2(12, 7)
+
+[node name="BaseAttack" instance=ExtResource("1_2nivn")]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(8, 3)
+texture = ExtResource("2_b18li")
+
+[node name="FreeNotifier2D" parent="Sprite2D" index="0"]
+rect = Rect2(-10, -5, 20, 10)
+
+[node name="CollisionShape2D" parent="Hitbox2D" index="0"]
+position = Vector2(11, 3)
+shape = SubResource("RectangleShape2D_b18li")

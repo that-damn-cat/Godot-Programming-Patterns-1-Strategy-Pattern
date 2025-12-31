@@ -1,3 +1,4 @@
+class_name ConstantRotationStrategy
 extends MovementStrategy
 
 func _get_direction_intent() -> Vector2:

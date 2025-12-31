@@ -10,6 +10,7 @@ func _perform_attack(attacker: Node2D, origin: Vector2, target: Vector2) -> void
 	# Calculate rotation speed required
 	var attack_range: float = clamp(attack_data.attack_range, 0.0, 360.0)
 	var rotation_speed: float = deg_to_rad(attack_range) / attack_data.duration_seconds
+	attack_scene.movement_strategy.controlled_node = attack_scene
 	attack_scene.movement_strategy.angular_speed = rotation_speed
 
 	# Set other requirements
@@ -18,7 +19,7 @@ func _perform_attack(attacker: Node2D, origin: Vector2, target: Vector2) -> void
 	attack_scene.hit_box.damage = attack_data.damage
 
 	# Set starting position and angle
-	attack_scene.global_position = attacker.global_position
+	attack_scene.global_position = Vector2.ZERO
 	attack_scene.spawn_offset = attack_data.pivot_offset
 
 	var angle_to_target = (target - origin).angle()
