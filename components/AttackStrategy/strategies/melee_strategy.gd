@@ -20,9 +20,6 @@ func _perform_attack(attacker: Node2D, origin: Vector2, target: Vector2) -> void
 	_set_collision(attacker, attack_scene.hit_box)
 	attack_scene.duration_seconds = attack_data.duration_seconds
 	attack_scene.hit_box.damage = attack_data.damage
-
-	# Set starting position and angle
-	attack_scene.global_position = Vector2.ZERO
 	attack_scene.spawn_offset = attack_data.pivot_offset
 
 	var angle_to_target = (target - origin).angle()
@@ -30,3 +27,4 @@ func _perform_attack(attacker: Node2D, origin: Vector2, target: Vector2) -> void
 
 	# Spawn it
 	attacker.add_child(attack_scene)
+	attack_scene.global_position = origin

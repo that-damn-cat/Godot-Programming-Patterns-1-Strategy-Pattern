@@ -2,7 +2,7 @@ class_name RangedStrategy
 extends AttackStrategy
 
 @export var speed: float = 200.0
-@export var accuracy: float = 1.0
+@export_range(0.0, 1.0, 0.01) var accuracy: float = 1.0
 
 func _perform_attack(attacker: Node2D, origin: Vector2, target: Vector2) -> void:
 	var projectile: Attack = attack_data.get_attack_scene()
@@ -28,10 +28,9 @@ func _perform_attack(attacker: Node2D, origin: Vector2, target: Vector2) -> void
 	var angle_to_target = (target - origin).angle()
 	projectile.rotation = angle_to_target + accuracy_offset
 	projectile.scale = attacker.scale
-
-	projectile.global_position = attacker.global_position
 	projectile.spawn_offset = attack_data.pivot_offset
 
 	# Spawn it
 	var container: Node = NodeFinder.get_projectile_container()
 	container.add_child(projectile)
+	projectile.global_position = origin
