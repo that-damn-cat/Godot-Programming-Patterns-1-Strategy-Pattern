@@ -2,8 +2,6 @@
 class_name AttackPickup
 extends Area2D
 
-const NO_ATTACK: AttackStrategy = preload("res://attacks/null/null_attack.tres")
-
 @export var attack_strategy: AttackStrategy:
 	get:
 		return(_attack_strategy)
@@ -39,7 +37,7 @@ func update_strategy(this_strategy: AttackStrategy) -> void:
 		return
 
 	if this_strategy == null:
-		this_strategy = NO_ATTACK
+		this_strategy = Constants.NULL_ATTACK_STRATEGY
 
 	_attack_strategy = this_strategy
 

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="NullMovement" load_steps=2 format=3 uid="uid://de04qxshmvbrb"]
+
+[ext_resource type="Script" uid="uid://bxhoopvbe5vjn" path="res://components/MovementStrategy/strategies/null_movement.gd" id="1_ftr5r"]
+
+[resource]
+script = ExtResource("1_ftr5r")
+metadata/_custom_type_script = "uid://bxhoopvbe5vjn"

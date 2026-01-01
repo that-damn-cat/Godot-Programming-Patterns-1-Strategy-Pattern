@@ -1,8 +1,6 @@
 class_name Player
 extends CharacterBody2D
 
-const NO_ATTACK: AttackStrategy = preload("res://attacks/null/null_attack.tres")
-
 @export_category("Movement")
 @export var movement_controller: MovementStrategy
 @export var starting_speed: float = 200.0
@@ -30,7 +28,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		attack_strategy.attack(self, global_position, get_viewport().get_mouse_position())
+		attack_strategy.attack(self, global_position, get_global_mouse_position())
 
 func _physics_process(delta: float) -> void:
 	velocity = movement_controller.velocity
@@ -39,7 +37,7 @@ func _physics_process(delta: float) -> void:
 
 func _update_strategy(new_strategy: AttackStrategy):
 	if new_strategy == null:
-		new_strategy = NO_ATTACK
+		new_strategy = Constants.NULL_ATTACK_STRATEGY
 
 	_attack_strategy = new_strategy
 
