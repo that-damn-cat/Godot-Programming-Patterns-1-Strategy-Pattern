@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="SlideToTarget" load_steps=2 format=3 uid="uid://b05h0t77bm11e"]
+
+[ext_resource type="Script" uid="uid://brqynsanly7ox" path="res://components/MovementStrategy/strategies/slide_to_target.gd" id="1_5p0to"]
+
+[resource]
+script = ExtResource("1_5p0to")
+metadata/_custom_type_script = "uid://brqynsanly7ox"

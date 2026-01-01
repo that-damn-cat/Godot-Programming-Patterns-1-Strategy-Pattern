@@ -2,6 +2,7 @@ class_name RangedStrategy
 extends AttackStrategy
 
 @export var speed: float = 200.0
+@export var turn_speed: float = 180.0	# Turning speed (if used) in degrees per second
 @export_range(0.0, 1.0, 0.01) var accuracy: float = 1.0
 
 func _perform_attack(attacker: Node2D, origin: Vector2, target: Vector2) -> void:
@@ -9,15 +10,21 @@ func _perform_attack(attacker: Node2D, origin: Vector2, target: Vector2) -> void
 
 	# Configure movement
 	projectile.movement_strategy = attack_data.movement_strategy.duplicate()
+	if attacker is Player:
+		projectile.movement_strategy.target_node = NodeFinder.get_nearest_enemy(target)
+	else:
+		projectile.movement_strategy.target_node = NodeFinder.get_player_node()
 
 	# Set Speed
 	projectile.movement_strategy.controlled_node = projectile
 	projectile.movement_strategy.speed = speed
+	projectile.movement_strategy.angular_speed = deg_to_rad(turn_speed)
 
 	# Set other requirements
 	_set_collision(attacker, projectile.hit_box)
 	projectile.duration_seconds = attack_data.duration_seconds
 	projectile.hit_box.damage = attack_data.damage
+	projectile.piercing = attack_data.piercing
 	projectile.origin = origin
 	projectile.max_distance = attack_data.attack_range
 

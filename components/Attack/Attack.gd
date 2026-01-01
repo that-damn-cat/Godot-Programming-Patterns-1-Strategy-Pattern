@@ -3,13 +3,13 @@ extends Node2D
 
 @export var hit_box: Hitbox2D
 @export var sprite: Sprite2D
+@export var movement_strategy: MovementStrategy
 
-var movement_strategy: MovementStrategy
 var duration_seconds: float = 999.0
 var spawn_offset := Vector2.ZERO
 var origin := Vector2.ZERO
 var max_distance: float = 0.0
-
+var piercing: bool = false
 
 func _ready() -> void:
 	if not hit_box or not sprite:
@@ -18,12 +18,11 @@ func _ready() -> void:
 
 	sprite.position += spawn_offset * scale
 
-	if hit_box:
-		if not hit_box.is_ancestor_of(sprite):
-			hit_box.position += spawn_offset * scale
+	if not hit_box.is_ancestor_of(sprite):
+		hit_box.position += spawn_offset * scale
 
-		hit_box.hit_hurtbox.connect(queue_free)
-
+	if not piercing:
+		hit_box.hit_hurtbox.connect(_on_hitbox_hit)
 	_setup_despawn_timer(duration_seconds)
 
 func _process(_delta: float) -> void:
@@ -55,3 +54,7 @@ func _setup_despawn_timer(duration: float) -> void:
 	despawn_timer.one_shot = true
 	add_child(despawn_timer)
 	despawn_timer.timeout.connect(queue_free)
+
+func _on_hitbox_hit(hurtbox: Hurtbox2D) -> void:
+	print("Attack hit: ", hurtbox.name)
+	queue_free()

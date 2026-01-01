@@ -5,6 +5,9 @@ extends Resource
 ## Origin node, if needed
 var controlled_node: Node2D
 
+## Target node, if needed
+var target_node: Node2D
+
 ## Pixels per second
 var speed: float = 0.0
 
@@ -26,8 +29,12 @@ var velocity: Vector2:
 	get:
 		return(direction * speed)
 
-func _init() -> void:
+func _init(controlled: Node2D = null, target: Node2D = null, spd: float = 0.0, angular_spd: float = 0.0) -> void:
 	resource_local_to_scene = true
+	controlled_node = controlled
+	target_node = target
+	speed = spd
+	angular_speed = angular_spd
 
 ## Should return a normalized direction vector.
 @abstract func _get_direction_intent() -> Vector2

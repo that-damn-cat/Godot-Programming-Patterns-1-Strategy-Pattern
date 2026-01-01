@@ -13,6 +13,7 @@ extends Resource
 @export_category("Attack Data")
 @export var attack_sfx: AudioStream					## The sound effect to play when this attack is used.
 @export var damage: float							## The damage this attack deals.
+@export var piercing: bool							## Whether this attack frees itself on hit.
 @export var attack_range: float						## Range of the attack (see invdividual strategies for details)
 @export var duration_seconds: float					## The duration in seconds before this attack despawns.
 @export var cooldown_seconds: float					## The cooldown in seconds before this attack can be used again.

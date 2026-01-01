@@ -20,6 +20,7 @@ pickup_icon = ExtResource("4_brekm")
 pickup_angle_degrees = -90.0
 attack_sfx = ExtResource("2_nmy55")
 damage = 6.0
+piercing = true
 duration_seconds = 0.25
 cooldown_seconds = 0.5
 metadata/_custom_type_script = "uid://dmqwweib121uh"

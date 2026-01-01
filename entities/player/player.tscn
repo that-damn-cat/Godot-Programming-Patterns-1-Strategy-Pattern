@@ -1,10 +1,10 @@
 [gd_scene load_steps=15 format=3 uid="uid://dl5oym57t06lg"]
 
 [ext_resource type="Script" uid="uid://bt4chuj4wdwdd" path="res://entities/player/player.gd" id="1_bls4j"]
-[ext_resource type="Texture2D" uid="uid://dgdu6x6631aq" path="res://assets/brackeys-platformer-bundle/knight.png" id="1_symyc"]
+[ext_resource type="Texture2D" uid="uid://dgdu6x6631aq" path="res://entities/player/assets/knight.png" id="1_symyc"]
 [ext_resource type="Script" uid="uid://bokafrop3ln7a" path="res://components/MovementStrategy/strategies/player_movement.gd" id="2_bls4j"]
 [ext_resource type="Resource" uid="uid://cad7lgpy0q5s8" path="res://attacks/null/null_attack.tres" id="3_8fjmc"]
-[ext_resource type="Script" uid="uid://dpkqn4kijbwpl" path="res://entities/player/scripts/animation_player.gd" id="4_8fjmc"]
+[ext_resource type="Script" uid="uid://dpkqn4kijbwpl" path="res://entities/scripts/animation_player.gd" id="4_8fjmc"]
 [ext_resource type="Texture2D" uid="uid://sldslk36xk7a" path="res://assets/ground_shadow.png" id="4_qiwj3"]
 
 [sub_resource type="Resource" id="Resource_8fjmc"]
@@ -179,10 +179,11 @@ movement_controller = SubResource("Resource_8fjmc")
 starting_attack = ExtResource("3_8fjmc")
 
 [node name="Shadow" type="Sprite2D" parent="."]
-position = Vector2(0, 10.5)
+position = Vector2(0, 6.5)
 texture = ExtResource("4_qiwj3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
 texture = ExtResource("1_symyc")
 hframes = 20
 
@@ -196,7 +197,6 @@ script = ExtResource("4_8fjmc")
 body = NodePath("../..")
 
 [node name="PhysicsCollider" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_sfv1e")
 
 [node name="ShootSFX" type="AudioStreamPlayer" parent="."]

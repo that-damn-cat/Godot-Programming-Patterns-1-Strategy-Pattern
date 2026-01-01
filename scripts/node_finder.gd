@@ -68,6 +68,9 @@ func get_player_node() -> Player:
 	if is_instance_valid(player_node):
 		return(player_node)
 
+	if get_tree() == null:
+		return(null)
+
 	player_node = get_tree().get_first_node_in_group("Player")
 
 	return(player_node)
