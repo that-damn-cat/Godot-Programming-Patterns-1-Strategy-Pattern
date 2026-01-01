@@ -55,6 +55,5 @@ func _setup_despawn_timer(duration: float) -> void:
 	add_child(despawn_timer)
 	despawn_timer.timeout.connect(queue_free)
 
-func _on_hitbox_hit(hurtbox: Hurtbox2D) -> void:
-	print("Attack hit: ", hurtbox.name)
+func _on_hitbox_hit(_hurtbox: Hurtbox2D) -> void:
 	queue_free()
