@@ -14,7 +14,7 @@ metadata/_custom_type_script = "uid://cumqmxndmfx0n"
 [sub_resource type="Resource" id="Resource_bdcno"]
 script = ExtResource("5_pd6wx")
 attack_scene = ExtResource("1_xlbil")
-pivot_offset = 6.0
+pivot_offset = Vector2(4, 0)
 movement_strategy = SubResource("Resource_vipu0")
 pickup_icon = ExtResource("4_0hsu1")
 attack_sfx = ExtResource("2_3ao1t")

@@ -2,20 +2,20 @@ class_name AttackData
 extends Resource
 
 @export_category("Attack Scene")
-@export var attack_scene: PackedScene
-@export var pivot_offset: float
-@export var movement_strategy: MovementStrategy
+@export var attack_scene: PackedScene				## The scene to instantiate when performing this attack.
+@export var pivot_offset: Vector2					## How much to offset the sprite and hitbox from the attack origin.
+@export var movement_strategy: MovementStrategy		## The movement strategy to apply to the attack.
 
 @export_category("Pickup Config")
-@export var pickup_icon: Texture2D
-@export var pickup_angle_degrees: float
+@export var pickup_icon: Texture2D					## The icon to use for pickups of this attack.
+@export var pickup_angle_degrees: float				## The angle to rotate the pickup icon.
 
 @export_category("Attack Data")
-@export var attack_sfx: AudioStream
-@export var damage: float
-@export var attack_range: float
-@export var duration_seconds: float
-@export var cooldown_seconds: float
+@export var attack_sfx: AudioStream					## The sound effect to play when this attack is used.
+@export var damage: float							## The damage this attack deals.
+@export var attack_range: float						## Range of the attack (see invdividual strategies for details)
+@export var duration_seconds: float					## The duration in seconds before this attack despawns.
+@export var cooldown_seconds: float					## The cooldown in seconds before this attack can be used again.
 
 
 func _init() -> void:

@@ -6,17 +6,21 @@ extends Node2D
 
 var movement_strategy: MovementStrategy
 var duration_seconds: float = 999.0
-var spawn_offset: float = 0.0
-var origin: Vector2 = Vector2.ZERO
+var spawn_offset := Vector2.ZERO
+var origin := Vector2.ZERO
 var max_distance: float = 0.0
 
 
 func _ready() -> void:
-	sprite.position.x += spawn_offset
+	if not hit_box or not sprite:
+		push_error("Attack node missing required child nodes.")
+		queue_free()
+
+	sprite.position += spawn_offset * scale
 
 	if hit_box:
 		if not hit_box.is_ancestor_of(sprite):
-			hit_box.position.x += spawn_offset
+			hit_box.position += spawn_offset * scale
 
 		hit_box.hit_hurtbox.connect(queue_free)
 
@@ -27,6 +31,9 @@ func _process(_delta: float) -> void:
 		queue_free()
 
 func _physics_process(delta: float) -> void:
+	if movement_strategy == null:
+		movement_strategy = Constants.NULL_MOVEMENT_STRATEGY
+
 	global_position += movement_strategy.velocity * delta
 	rotation += movement_strategy.rotation * delta
 
@@ -39,7 +46,7 @@ func _exceeded_distance() -> bool:
 	return(distance > max_distance)
 
 func _setup_despawn_timer(duration: float) -> void:
-	if duration_seconds == INF or duration_seconds <= 0.0:
+	if duration == INF or duration <= 0.0:
 		return
 
 	var despawn_timer := Timer.new()
