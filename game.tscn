@@ -199,7 +199,19 @@ shape = SubResource("WorldBoundaryShape2D_7jktm")
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("4_mfdv2")]
-position = Vector2(926, 219)
+position = Vector2(857, 131)
+scale = Vector2(2, 2)
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource("4_mfdv2")]
+position = Vector2(919, 234)
+scale = Vector2(2, 2)
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource("4_mfdv2")]
+position = Vector2(813, 275)
+scale = Vector2(2, 2)
+
+[node name="Enemy4" parent="Enemies" instance=ExtResource("4_mfdv2")]
+position = Vector2(1002, 193)
 scale = Vector2(2, 2)
 
 [node name="Player" parent="." instance=ExtResource("3_feb5d")]

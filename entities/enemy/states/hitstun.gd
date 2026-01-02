@@ -8,7 +8,7 @@ var _hurt_anim_finished: bool
 
 func enter() -> void:
 	var _entity: Entity = state_machine.controlled_node
-	_entity.movement_controller = Constants.NULL_MOVEMENT_STRATEGY
+	_entity.movement_strategy = Constants.NULL_MOVEMENT_STRATEGY
 	remaining_time = hitstun_time
 	_hurt_anim_finished = false
 
