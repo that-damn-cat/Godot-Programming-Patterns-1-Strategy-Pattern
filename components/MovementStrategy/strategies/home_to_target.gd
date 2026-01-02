@@ -16,7 +16,7 @@ func _get_rotation_intent() -> float:
 	var desired_angle: float = (target_node.global_position - controlled_node.global_position).angle()
 	var angle_diff: float = angle_difference(controlled_node.global_rotation, desired_angle)
 
-	if abs(angle_diff) < deg_to_rad(1.0):
+	if abs(angle_diff) < deg_to_rad(5.0):
 		return(0.0)
 
 	return(angular_speed * sign(angle_diff))

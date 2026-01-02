@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://nf1n1241o2fx"]
+[gd_scene load_steps=21 format=4 uid="uid://nf1n1241o2fx"]
 
 [ext_resource type="Texture2D" uid="uid://baa44uctf6ptu" path="res://assets/pixel_plains_free/new_basic_tiles_free.png" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://c08pw6rfr55p0" path="res://game.gd" id="1_fc0e3"]
@@ -11,6 +11,8 @@
 [ext_resource type="Resource" uid="uid://cmsthi3pmfrdq" path="res://attacks/sword_swing.tres" id="8_hve3p"]
 [ext_resource type="Resource" uid="uid://di3xcl4dcnuon" path="res://attacks/spear_attack.tres" id="8_vef74"]
 [ext_resource type="Resource" uid="uid://qqfttpovoug2" path="res://attacks/sword_throw.tres" id="10_hve3p"]
+[ext_resource type="PackedScene" uid="uid://sl72qqpfp8mq" path="res://attacks/scenes/projectiles/arrow/arrow.tscn" id="12_lc2xo"]
+[ext_resource type="Script" uid="uid://c470gibcot6gk" path="res://components/MovementStrategy/strategies/home_to_target.gd" id="13_215e1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fc0e3"]
 texture = ExtResource("1_e2o6t")
@@ -163,6 +165,10 @@ normal = Vector2(-1, 0)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7jktm"]
 normal = Vector2(1, 0)
 
+[sub_resource type="Resource" id="Resource_7sc4i"]
+script = ExtResource("13_215e1")
+metadata/_custom_type_script = "uid://c470gibcot6gk"
+
 [node name="Game" type="Node" node_paths=PackedStringArray("projectile_container", "enemy_container") groups=["Game"]]
 script = ExtResource("1_fc0e3")
 projectile_container = NodePath("Projectiles")
@@ -239,3 +245,9 @@ attack_strategy = ExtResource("8_hve3p")
 [node name="WeaponPickup6" parent="." instance=ExtResource("5_j5wjh")]
 position = Vector2(304, 223)
 attack_strategy = ExtResource("10_hve3p")
+
+[node name="BaseAttack" parent="." instance=ExtResource("12_lc2xo")]
+unique_name_in_owner = true
+position = Vector2(487, 389)
+scale = Vector2(2, 2)
+movement_strategy = SubResource("Resource_7sc4i")
